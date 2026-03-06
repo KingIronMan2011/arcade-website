@@ -163,7 +163,32 @@ h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(.9rem,4vw,1
 .tut-btn.next:active{background:#00ffaa18;}
 .tut-btn.skip{font-size:.6rem;}
 
-/* ── TOAST ── */
+/* ── MENU OVERLAY ── */
+#menuOverlay{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;
+  justify-content:flex-end;z-index:60;background:rgba(3,8,16,.6);backdrop-filter:blur(4px);}
+#menuOverlay.active{display:flex;}
+.menu-sheet{background:#060f20;border:1px solid #1a3050;border-bottom:none;
+  border-radius:16px 16px 0 0;width:100%;max-width:480px;padding:20px 20px;
+  padding-bottom:max(env(safe-area-inset-bottom,0),20px);
+  display:flex;flex-direction:column;gap:10px;
+  animation:slideUp .22s ease;}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.menu-title{font-family:'Orbitron',sans-serif;font-size:.7rem;letter-spacing:.25em;
+  color:#334455;text-align:center;margin-bottom:4px;}
+.menu-item{display:flex;align-items:center;gap:14px;padding:13px 16px;
+  background:#0a1628;border:1px solid #1a3050;border-radius:8px;cursor:pointer;
+  text-decoration:none;color:inherit;transition:border-color .15s,background .15s;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.menu-item:active{border-color:var(--snake);background:#00ffaa0d;}
+.menu-item-icon{font-size:1.3rem;width:28px;text-align:center;}
+.menu-item-text{display:flex;flex-direction:column;gap:2px;}
+.menu-item-name{font-family:'Orbitron',sans-serif;font-size:.7rem;letter-spacing:.12em;color:var(--snake);}
+.menu-item-desc{font-size:.57rem;color:#445566;letter-spacing:.05em;}
+.menu-divider{height:1px;background:#0e2035;margin:2px 0;}
+.menu-close{font-family:'Orbitron',sans-serif;font-size:.65rem;letter-spacing:.15em;
+  padding:11px;border:1px solid #1a3050;background:transparent;color:#445566;
+  cursor:pointer;border-radius:8px;transition:all .15s;touch-action:manipulation;}
+.menu-close:active{border-color:#556677;color:#7799aa;}
 #toast{position:fixed;top:max(env(safe-area-inset-top,0),14px);left:50%;
   transform:translateX(-50%) translateY(-70px);
   background:#0a1628;border:1px solid #00ffaa44;border-radius:6px;
@@ -179,7 +204,7 @@ h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(.9rem,4vw,1
   <div class="topbar">
     <button class="back-btn" onclick="location.href='index.html'">← BACK</button>
     <h1>NEON SNAKE</h1>
-    <div class="topbar-spacer"></div>
+    <button class="back-btn" id="menuBtn">☰ MENU</button>
   </div>
 
   <!-- HUD -->
@@ -200,8 +225,7 @@ h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(.9rem,4vw,1
   <!-- Keyboard hint (desktop) -->
   <div class="kbd-hint"><kbd>↑↓←→</kbd>/<kbd>WASD</kbd> &nbsp;·&nbsp; <kbd>SPACE</kbd> Pause</div>
 
-  <!-- D-Pad (touch) -->
-  <div class="dpad">
+  <!-- D-Pad (touch) -->  <div class="dpad">
     <div class="dpad-row"><button class="dpad-btn" id="btnUp">▲</button></div>
     <div class="dpad-row">
       <button class="dpad-btn" id="btnLeft">◀</button>
@@ -211,11 +235,6 @@ h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(.9rem,4vw,1
     <div class="dpad-row"><button class="dpad-btn" id="btnDown">▼</button></div>
   </div>
 
-  <!-- Nav -->
-  <div class="nav-btns">
-    <button class="nav-btn" id="openShopBtn">🛒 SHOP</button>
-    <button class="nav-btn" id="openTutBtn">? HELP</button>
-  </div>
 </div>
 
 <!-- MAIN OVERLAY -->
@@ -252,6 +271,36 @@ h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(.9rem,4vw,1
       <button class="tut-btn skip" id="tutSkip">SKIP</button>
       <button class="tut-btn next" id="tutNext">NEXT ▶</button>
     </div>
+  </div>
+</div>
+
+<!-- MENU OVERLAY -->
+<div id="menuOverlay">
+  <div class="menu-sheet">
+    <div class="menu-title">MENU</div>
+    <div class="menu-item" id="menuShop">
+      <span class="menu-item-icon">🛒</span>
+      <div class="menu-item-text">
+        <span class="menu-item-name">SHOP</span>
+        <span class="menu-item-desc">Buy upgrades & toggle perks</span>
+      </div>
+    </div>
+    <div class="menu-item" id="menuTut">
+      <span class="menu-item-icon">?</span>
+      <div class="menu-item-text">
+        <span class="menu-item-name">HOW TO PLAY</span>
+        <span class="menu-item-desc">View the tutorial</span>
+      </div>
+    </div>
+    <div class="menu-divider"></div>
+    <a class="menu-item" href="index.html">
+      <span class="menu-item-icon">🕹️</span>
+      <div class="menu-item-text">
+        <span class="menu-item-name">ARCADE</span>
+        <span class="menu-item-desc">Back to game selection</span>
+      </div>
+    </a>
+    <button class="menu-close" id="menuClose">✕ CLOSE</button>
   </div>
 </div>
 
@@ -527,7 +576,6 @@ function buyOrToggle(id){
 
 function openShop(){if(!gameOver&&gameLoop){paused=true;clearInterval(gameLoop);}renderShop();document.getElementById('shopOverlay').classList.add('active');}
 function closeShop(){document.getElementById('shopOverlay').classList.remove('active');if(!gameOver&&gameLoop&&paused){paused=false;gameLoop=setInterval(step,speed);}}
-document.getElementById('openShopBtn').addEventListener('click',openShop);
 document.getElementById('mainShopBtn').addEventListener('click',openShop);
 document.getElementById('closeShopBtn').addEventListener('click',closeShop);
 
@@ -558,7 +606,6 @@ document.getElementById('tutNext').addEventListener('click',()=>{tutStep++;if(tu
 document.getElementById('tutSkip').addEventListener('click',closeTut);
 function openTut(){tutStep=0;renderTut();document.getElementById('tutorialOverlay').classList.add('active');}
 function closeTut(){document.getElementById('tutorialOverlay').classList.remove('active');localStorage.setItem('snakeTutDone','1');}
-document.getElementById('openTutBtn').addEventListener('click',openTut);
 document.getElementById('mainTutBtn').addEventListener('click',openTut);
 
 // ── Toast ─────────────────────────────────────────────────────────────
@@ -592,7 +639,20 @@ canvas.addEventListener('touchend',e=>{
   e.preventDefault();
 },{passive:false});
 
-// ── Boot ──────────────────────────────────────────────────────────────
+// ── Menu ──────────────────────────────────────────────────────────────
+function openMenu(){
+  if(!gameOver&&gameLoop){paused=true;clearInterval(gameLoop);}
+  document.getElementById('menuOverlay').classList.add('active');
+}
+function closeMenu(){
+  document.getElementById('menuOverlay').classList.remove('active');
+  if(!gameOver&&gameLoop&&paused){paused=false;gameLoop=setInterval(step,speed);}
+}
+document.getElementById('menuBtn').addEventListener('click',openMenu);
+document.getElementById('menuClose').addEventListener('click',closeMenu);
+document.getElementById('menuOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeMenu();});
+document.getElementById('menuShop').addEventListener('click',()=>{closeMenu();openShop();});
+document.getElementById('menuTut').addEventListener('click',()=>{closeMenu();openTut();});
 resizeCanvas();
 drawBg();
 updateHUD();
