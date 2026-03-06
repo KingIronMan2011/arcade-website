@@ -1,15 +1,14 @@
+<!-- V2: Bold neon "A" lettermark -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="6" fill="#030810"/>
-  <!-- joystick base -->
-  <rect x="6" y="18" width="20" height="10" rx="3" fill="#0a1e30"/>
-  <rect x="6" y="18" width="20" height="10" rx="3" fill="none" stroke="#00ffaa" stroke-width="1"/>
-  <!-- stick -->
-  <line x1="16" y1="18" x2="16" y2="8" stroke="#00ffaa" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- ball on top -->
-  <circle cx="16" cy="7" r="4" fill="#00ffaa"/>
-  <circle cx="14.5" cy="5.5" r="1.2" fill="rgba(255,255,255,0.4)"/>
-  <!-- buttons -->
-  <circle cx="11" cy="22" r="2.2" fill="#ff2d6b"/>
-  <circle cx="17" cy="22" r="2.2" fill="#00c8ff"/>
-  <circle cx="23" cy="22" r="2.2" fill="#ffd700"/>
+  <!-- outer glow ring -->
+  <rect x="3" y="3" width="26" height="26" rx="5" fill="none" stroke="#00ffaa" stroke-width=".8" opacity=".25"/>
+  <!-- A shape -->
+  <path d="M16 5 L27 27 H22 L19.5 21 H12.5 L10 27 H5 Z" fill="#00ffaa"/>
+  <!-- crossbar cutout -->
+  <rect x="13.2" y="18" width="5.6" height="2.5" rx=".5" fill="#030810"/>
+  <!-- inner A cutout (triangle) -->
+  <path d="M16 9 L21 22 H11 Z" fill="#030810"/>
+  <!-- re-add crossbar area -->
+  <rect x="13.2" y="18" width="5.6" height="2.2" rx=".4" fill="#030810"/>
 </svg>
