@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#030810"/>
+  <!-- joystick base -->
+  <rect x="6" y="18" width="20" height="10" rx="3" fill="#0a1e30"/>
+  <rect x="6" y="18" width="20" height="10" rx="3" fill="none" stroke="#00ffaa" stroke-width="1"/>
+  <!-- stick -->
+  <line x1="16" y1="18" x2="16" y2="8" stroke="#00ffaa" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- ball on top -->
+  <circle cx="16" cy="7" r="4" fill="#00ffaa"/>
+  <circle cx="14.5" cy="5.5" r="1.2" fill="rgba(255,255,255,0.4)"/>
+  <!-- buttons -->
+  <circle cx="11" cy="22" r="2.2" fill="#ff2d6b"/>
+  <circle cx="17" cy="22" r="2.2" fill="#00c8ff"/>
+  <circle cx="23" cy="22" r="2.2" fill="#ffd700"/>
+</svg>
