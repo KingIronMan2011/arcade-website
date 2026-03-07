@@ -695,7 +695,7 @@ const ITEMS = [
   { id:'coinBoost',  type:'perk', icon:'🪙', name:'COIN BOOST', cost:35,  desc:'Double coin earnings for one run.' },
   { id:'extraLife',  type:'perk', icon:'❤️', name:'EXTRA LIFE', cost:90,  desc:'Start with an additional life.' },
 ];
-function speedCap()  { return [Infinity,75,92,115][upgrades.speedCap||0]; }
+function speedCap()  { return [55, 75, 92, 115][upgrades.speedCap||0]; }
 function scoreMult() { return [1,1.25,1.6,2][upgrades.scoreBoost||0]; }
 
 // ── Game state ────────────────────────────────────────────────────────
@@ -781,8 +781,7 @@ function step() {
     score += pts; coinsThisRun += coin; totalCoins += coin;
     if (score > highscore) highscore = score;
     level = Math.floor(score/100)+1;
-    const cap = speedCap();
-    speed = Math.max(Math.min(cap,55), Math.min(cap,130-(level-1)*12));
+    speed = Math.max(speedCap(), 130-(level-1)*12);
     placeFood(); updateHUD(); save();
     clearInterval(gameLoop); gameLoop = setInterval(step, speed);
   } else {
