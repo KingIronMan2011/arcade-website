@@ -24,6 +24,23 @@
   --glow-gold: 0 0 8px #ffd700, 0 0 20px #ffd70088;
 }
 
+@media (dynamic-range: high) {
+  :root {
+    --bg: #08121e;
+    --panel: #0a1828;
+    --border: #162535;
+    --snake: #00c484;
+    --food: #c42455;
+    --accent: #009ab8;
+    --gold: #c8a800;
+    --glow-g: 0 0 4px #00c48488, 0 0 10px #00c48433;
+    --glow-r: 0 0 4px #c4245588, 0 0 10px #c4245533;
+    --glow-gold: 0 0 4px #c8a80088, 0 0 10px #c8a80033;
+  }
+  body { filter: brightness(.82) saturate(.72); }
+  body::before { opacity: .5; }
+}
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 html, body { height: 100%; }
