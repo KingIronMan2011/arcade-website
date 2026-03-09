@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#030810"/>
+  <!-- outer glow ring -->
+  <rect x="3" y="3" width="26" height="26" rx="5" fill="none" stroke="#00c8ff" stroke-width=".8" opacity=".25"/>
+
+  <!-- T-tetromino: 4 blocks arranged in a T shape, centered -->
+  <!-- Top row: 3 blocks across -->
+  <!-- block size 8×8, gap 1px, total width 26, offset to center -->
+
+  <!-- Top-left block -->
+  <rect x="4"  y="8" width="7" height="7" rx="1.5" fill="#00c8ff" opacity=".6"/>
+  <rect x="5"  y="9" width="5" height="2"  rx=".5"  fill="rgba(255,255,255,.25)"/>
+
+  <!-- Top-center block -->
+  <rect x="12" y="8" width="8" height="8" rx="1.5" fill="#00c8ff"/>
+  <rect x="13" y="9" width="6" height="2.5" rx=".5" fill="rgba(255,255,255,.3)"/>
+
+  <!-- Top-right block -->
+  <rect x="21" y="8" width="7" height="7" rx="1.5" fill="#00c8ff" opacity=".6"/>
+  <rect x="22" y="9" width="5" height="2"  rx=".5"  fill="rgba(255,255,255,.25)"/>
+
+  <!-- Bottom-center block (stem of T) -->
+  <rect x="12" y="17" width="8" height="8" rx="1.5" fill="#00c8ff"/>
+  <rect x="13" y="18" width="6" height="2.5" rx=".5" fill="rgba(255,255,255,.3)"/>
+</svg>
