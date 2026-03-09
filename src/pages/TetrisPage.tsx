@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#030810">
-<title>NEON TETRIS</title>
-<link rel="icon" type="image/x-icon" href="public/favicon-tetris.ico">
-<link rel="icon" type="image/svg+xml" href="public/favicon-tetris.svg">
-<link rel="apple-touch-icon" href="public/apple-touch-icon-tetris.png">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
-:root{
+import { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+const CSS = `:root{
   --bg:#030810;--panel:#060f20;--border:#0e2035;
   --snake:#00ffaa;--accent:#00c8ff;--gold:#ffd700;--food:#ff2d6b;
   --glow-g:0 0 8px #00ffaa,0 0 20px #00ffaa88;
@@ -133,14 +124,12 @@ kbd{background:#0a1628;border:1px solid #1a3050;border-radius:3px;padding:1px 4p
 /* ── Toast ── */
 #toast{position:fixed;top:max(env(safe-area-inset-top,0px),16px);left:50%;transform:translateX(-50%) translateY(-80px);background:#0a1628;border:1px solid rgba(0,200,255,.27);border-radius:8px;padding:9px 20px;font-size:.78rem;letter-spacing:.09em;color:var(--accent);z-index:400;transition:transform .3s ease;pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.5);}
 #toast.show{transform:translateX(-50%) translateY(0);}
-</style>
-</head>
-<body>
+`
 
-<div id="layout">
+const BODY_HTML = `<div id="layout">
   <!-- Top bar -->
   <div id="topbar">
-    <a class="top-btn" href="index.html">← ARCADE</a>
+    <a class="top-btn" data-nav="/">← ARCADE</a>
     <h1>NEON TETRIS</h1>
     <button class="top-btn" id="menu-btn">☰ MENU</button>
   </div>
@@ -211,7 +200,7 @@ kbd{background:#0a1628;border:1px solid #1a3050;border-radius:3px;padding:1px 4p
   <button class="primary-btn" id="start-btn">PLAY</button>
   <div class="ov-btns">
     <button class="ov-btn" id="ov-how-btn">? HELP</button>
-    <a class="ov-btn" href="index.html">← ARCADE</a>
+    <a class="ov-btn" data-nav="/">← ARCADE</a>
   </div>
   <div class="rec-text" id="rec-text"></div>
 </div>
@@ -237,7 +226,7 @@ kbd{background:#0a1628;border:1px solid #1a3050;border-radius:3px;padding:1px 4p
       <div><div class="menu-item-name">HOW TO PLAY</div><div class="menu-item-desc">View the tutorial</div></div>
     </button>
     <div class="menu-divider"></div>
-    <a class="menu-item" href="index.html">
+    <a class="menu-item" data-nav="/">
       <span class="menu-icon">🕹️</span>
       <div><div class="menu-item-name">ARCADE</div><div class="menu-item-desc">Back to game selection</div></div>
     </a>
@@ -246,10 +235,9 @@ kbd{background:#0a1628;border:1px solid #1a3050;border-radius:3px;padding:1px 4p
 </div>
 
 <!-- Toast -->
-<div id="toast"></div>
+<div id="toast"></div>`
 
-<script>
-// ═══════════════════════════════════════════════════════
+const GAME_SCRIPT = `// ═══════════════════════════════════════════════════════
 //  CONSTANTS
 // ═══════════════════════════════════════════════════════
 const COLS = 10, ROWS = 20, CELL = 20;
@@ -864,15 +852,15 @@ function renderTut() {
   const prog = document.getElementById('tut-progress');
   const steps = document.getElementById('tut-steps');
   prog.innerHTML = TUT_STEPS.map((_,i) =>
-    `<div style="width:9px;height:9px;border-radius:50%;background:${i===tutStep?'var(--accent)':'#1a3050'};${i===tutStep?'box-shadow:var(--glow-b)':''};transition:background .3s"></div>`
+    \`<div style="width:9px;height:9px;border-radius:50%;background:\${i===tutStep?'var(--accent)':'#1a3050'};\${i===tutStep?'box-shadow:var(--glow-b)':''};transition:background .3s"></div>\`
   ).join('');
   const step = TUT_STEPS[tutStep];
-  steps.innerHTML = `
+  steps.innerHTML = \`
     <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;animation:fadeIn .3s ease;">
-      <div style="font-size:clamp(2rem,6vw,2.8rem);filter:drop-shadow(0 0 10px rgba(0,200,255,.5))">${step.icon}</div>
-      <div style="font-family:'Orbitron',sans-serif;font-size:clamp(.85rem,3vw,1.05rem);letter-spacing:.2em;color:var(--accent)">${step.title}</div>
-      <div style="font-size:clamp(.7rem,2.2vw,.8rem);color:#7799aa;line-height:1.9;letter-spacing:.04em">${step.text}</div>
-    </div>`;
+      <div style="font-size:clamp(2rem,6vw,2.8rem);filter:drop-shadow(0 0 10px rgba(0,200,255,.5))">\${step.icon}</div>
+      <div style="font-family:'Orbitron',sans-serif;font-size:clamp(.85rem,3vw,1.05rem);letter-spacing:.2em;color:var(--accent)">\${step.title}</div>
+      <div style="font-size:clamp(.7rem,2.2vw,.8rem);color:#7799aa;line-height:1.9;letter-spacing:.04em">\${step.text}</div>
+    </div>\`;
   document.getElementById('tut-next').textContent = tutStep === TUT_STEPS.length - 1 ? '✓ DONE' : 'NEXT ▶';
 }
 
@@ -932,7 +920,52 @@ ctx.strokeStyle = '#0a1628'; ctx.lineWidth = 0.5;
 for (let x = 0; x <= COLS; x++) { ctx.beginPath(); ctx.moveTo(x*CELL,0); ctx.lineTo(x*CELL,H); ctx.stroke(); }
 for (let y = 0; y <= ROWS; y++) { ctx.beginPath(); ctx.moveTo(0,y*CELL); ctx.lineTo(W,y*CELL); ctx.stroke(); }
 hctx.fillStyle = '#030810'; hctx.fillRect(0,0,100,80);
-nctx.fillStyle = '#030810'; nctx.fillRect(0,0,100,200);
-</script>
-</body>
-</html>
+nctx.fillStyle = '#030810'; nctx.fillRect(0,0,100,200);`
+
+export default function TetrisPage() {
+  const navigate = useNavigate()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const styleRef     = useRef<HTMLStyleElement | null>(null)
+  const scriptRef    = useRef<HTMLScriptElement | null>(null)
+
+  useEffect(() => {
+    document.title = 'NEON TETRIS'
+
+    const style = document.createElement('style')
+    style.textContent = CSS
+    document.head.appendChild(style)
+    styleRef.current = style
+
+    const container = containerRef.current!
+    container.innerHTML = BODY_HTML
+
+    container.querySelectorAll<HTMLElement>('[data-nav]').forEach(el => {
+      el.style.cursor = 'pointer'
+      el.addEventListener('click', (e) => {
+        e.preventDefault()
+        navigate(el.dataset.nav!)
+      })
+    })
+
+    const script = document.createElement('script')
+    script.textContent = GAME_SCRIPT
+    document.body.appendChild(script)
+    scriptRef.current = script
+
+    return () => {
+      styleRef.current?.remove()
+      scriptRef.current?.remove()
+      const highId = window.setInterval(() => { /* */ }, 99999) as number
+      for (let i = 0; i <= highId; i++) window.clearInterval(i)
+      const highRaf = window.requestAnimationFrame(() => { /* */ }) as number
+      for (let i = 0; i <= highRaf; i++) window.cancelAnimationFrame(i)
+    }
+  }, [navigate])
+
+  return (
+    <div
+      ref={containerRef}
+      style={{ height: '100dvh', overflow: 'hidden', position: 'relative', zIndex: 1 }}
+    />
+  )
+}

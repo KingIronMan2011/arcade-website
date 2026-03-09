@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Store the full URL in sessionStorage, then redirect to the root.
+      // index.html will read it and restore the path via history.replaceState
+      // so BrowserRouter sees the correct URL without a full page reload.
+      sessionStorage.setItem("spa-redirect", window.location.href);
+      window.location.replace("/arcade-website/");
+    </script>
+  </head>
+  <body></body>
+</html>
