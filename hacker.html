@@ -648,9 +648,8 @@ function updateStats() {
   document.getElementById('stat-kps').textContent = state.kpsBuffer.length;
 }
 
-function onKey(e) {
-  if (e.key === 'F5' || e.key === 'F12' || e.ctrlKey || e.altKey || e.metaKey) return;
-  e.preventDefault();
+function handleInput(e) {
+  if (e) e.preventDefault();
 
   if (!state.started) {
     state.started = true;
