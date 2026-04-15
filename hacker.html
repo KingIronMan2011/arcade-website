@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>H4CK3R T3RM1NAL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -72,6 +72,12 @@
     grid-template-columns: 1fr 280px;
     height: 100vh;
     gap: 0;
+  }
+
+  /* Added Media Queries to stack the sidebar below terminal */
+  @media (max-width: 768px) {
+    #app { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto auto; height: auto; }
+    #terminal { min-height: 400px; }
   }
 
   /* HEADER */
