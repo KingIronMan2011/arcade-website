@@ -24,6 +24,8 @@ export function Footer() {
           </Link>
           <a
             href="https://goberly.com/impressum"
+            target="_blank"
+            rel="noreferrer"
             className="transition-colors hover:text-foreground"
           >
             Imprint
