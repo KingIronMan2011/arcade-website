@@ -3,7 +3,7 @@
 > **Note:** This project is an experiment to see what Claude (Anthropic's AI) can build with zero manual code changes from the developer, there are only some exceptions. Every line of code, design decision, bug fix, and deployment was done entirely by Claude through conversation.
 
 ## Live Site
-👉 **[arcade.king-mc.de](https://arcade.king-mc.de)**
+👉 **[arcade.king-mc.de](https://arcade.kingironman.dev)**
 
 ## Games
 
@@ -31,7 +31,7 @@
 - Fonts: [Orbitron](https://fonts.google.com/specimen/Orbitron) + [Share Tech Mono](https://fonts.google.com/specimen/Share+Tech+Mono)
 
 ## Roadmap
-- [ ] Tetris
+- [x] Tetris
 - [ ] Breakout
 - [ ] Minesweeper
 - [ ] Migrate to Next.js
