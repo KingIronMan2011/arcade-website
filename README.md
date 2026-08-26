@@ -1,6 +1,6 @@
 # Arcade
 
-Small browser games with an unapologetically neon look. No build step, no framework, no account required.
+Small browser games with an unapologetically neon look. The arcade shell is built with Next.js, React, Tailwind CSS v4, and TypeScript 6.
 
 [Play it here](https://arcade.kingironman.dev)
 
@@ -14,23 +14,23 @@ Snake and Tetris save high scores, coins, and shop purchases in your browser. Cl
 
 ## Run it locally
 
-Clone the repo and open `index.html` in a browser. The games are plain HTML, CSS, and JavaScript, so there is nothing to install.
-
-For a local server:
+Install dependencies and start the development server:
 
 ```sh
-npx serve .
+npm install
+npm run dev
 ```
 
-Then open the address printed in the terminal.
+Open [http://localhost:3000](http://localhost:3000).
+
+Build the production app with `npm run build`. Run `npm run typecheck` to check the TypeScript app.
 
 ## Project layout
 
 ```text
-index.html    Arcade home screen
-snake.html    Neon Snake
-tetris.html   Neon Tetris
-hacker.html   Hacker Typer
+src/app/      Next.js routes and Tailwind styles
+src/components/ Shared React components
+public/games/ Original game pages, loaded by the React routes
 public/       Shared favicon and web-app icons
 ```
 
