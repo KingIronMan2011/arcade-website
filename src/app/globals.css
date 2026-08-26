@@ -259,4 +259,163 @@ body {
   color: var(--snake);
 }
 
-.game-page{min-height:100dvh;background:#030810;color:#8eaabb;font-family:var(--font-share-tech-mono),monospace;padding:16px}.game-topbar{align-items:center;border-bottom:1px solid #1b3a53;display:flex;justify-content:space-between;margin:auto;max-width:1000px;padding:10px 0}.game-topbar a,.game-topbar button{background:none;border:1px solid #28506d;color:#7da9c6;font:inherit;padding:7px 10px;text-decoration:none}.game-topbar h1{color:#00ffaa;font-family:var(--font-orbitron),sans-serif;font-size:clamp(.8rem,3vw,1.25rem);letter-spacing:.16em}.game-layout{align-items:start;display:grid;gap:20px;grid-template-columns:minmax(0,1fr) 220px;margin:20px auto;max-width:850px}.snake-board{aspect-ratio:1;background:#020d18;border:2px solid #00ffaa;display:grid}.snake-cell{border:1px solid rgba(0,200,255,.08)}.snake-cell.snake{background:#00ffaa;box-shadow:0 0 8px #00ffaa}.snake-cell.food{background:#ff3d9a;box-shadow:0 0 10px #ff3d9a}.game-sidebar{background:#060f20;border:1px solid #1b3a53;padding:15px}.game-sidebar h2{color:#00ffaa;font-size:.7rem;letter-spacing:.15em}.game-sidebar p{border-bottom:1px solid #10253a;font-size:.75rem;padding:10px 0}.game-sidebar b{color:#00ffaa;float:right}.tetris-board{aspect-ratio:1/2;background:#020d18;border:2px solid #00c8ff;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(20,1fr);max-width:400px}.tetris-cell{border:1px solid rgba(0,200,255,.12)}.tetris-cell.filled{background:#00c8ff;box-shadow:0 0 8px #00c8ff}.hacker-page{background:#020d02;color:#00ff41;font-family:var(--font-share-tech-mono),monospace;min-height:100dvh;padding:16px}.hacker-page header{border-bottom:1px solid #00b82f;display:flex;font-size:.8rem;justify-content:space-between;padding:8px}.hacker-page header span{color:#00b82f}.terminal{font-size:.75rem;line-height:1.7;min-height:70vh;padding:16px}.terminal i{animation:blink 1s step-end infinite;background:#00ff41;display:inline-block;height:12px;width:8px}.hacker-page aside{background:rgba(0,255,65,.04);border:1px solid rgba(0,255,65,.25);font-size:.75rem;padding:12px;position:fixed;right:16px;top:60px;width:220px}.hacker-page aside div{background:#003d0d;height:8px}.hacker-page aside div span{background:#00ff41;display:block;height:100%}@keyframes blink{50%{opacity:0}}@media(max-width:699px){.game-layout{grid-template-columns:1fr}.game-sidebar{width:100%}.hacker-page aside{position:static;width:auto}.hacker-page header span{display:none}}
+.game-page {
+  min-height: 100dvh;
+  background: #030810;
+  color: #8eaabb;
+  font-family: var(--font-share-tech-mono), monospace;
+  padding: 16px;
+}
+.game-topbar {
+  align-items: center;
+  border-bottom: 1px solid #1b3a53;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 1000px;
+  padding: 10px 0;
+}
+.game-topbar a,
+.game-topbar button {
+  background: none;
+  border: 1px solid #28506d;
+  color: #7da9c6;
+  font: inherit;
+  padding: 7px 10px;
+  text-decoration: none;
+}
+.game-topbar h1 {
+  color: #00ffaa;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: clamp(0.8rem, 3vw, 1.25rem);
+  letter-spacing: 0.16em;
+}
+.game-layout {
+  align-items: start;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  margin: 20px auto;
+  max-width: 850px;
+}
+.snake-board {
+  aspect-ratio: 1;
+  background: #020d18;
+  border: 2px solid #00ffaa;
+  display: grid;
+}
+.snake-cell {
+  border: 1px solid rgba(0, 200, 255, 0.08);
+}
+.snake-cell.snake {
+  background: #00ffaa;
+  box-shadow: 0 0 8px #00ffaa;
+}
+.snake-cell.food {
+  background: #ff3d9a;
+  box-shadow: 0 0 10px #ff3d9a;
+}
+.game-sidebar {
+  background: #060f20;
+  border: 1px solid #1b3a53;
+  padding: 15px;
+}
+.game-sidebar h2 {
+  color: #00ffaa;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+}
+.game-sidebar p {
+  border-bottom: 1px solid #10253a;
+  font-size: 0.75rem;
+  padding: 10px 0;
+}
+.game-sidebar b {
+  color: #00ffaa;
+  float: right;
+}
+.tetris-board {
+  aspect-ratio: 1/2;
+  background: #020d18;
+  border: 2px solid #00c8ff;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  max-width: 400px;
+}
+.tetris-cell {
+  border: 1px solid rgba(0, 200, 255, 0.12);
+}
+.tetris-cell.filled {
+  background: #00c8ff;
+  box-shadow: 0 0 8px #00c8ff;
+}
+.hacker-page {
+  background: #020d02;
+  color: #00ff41;
+  font-family: var(--font-share-tech-mono), monospace;
+  min-height: 100dvh;
+  padding: 16px;
+}
+.hacker-page header {
+  border-bottom: 1px solid #00b82f;
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: space-between;
+  padding: 8px;
+}
+.hacker-page header span {
+  color: #00b82f;
+}
+.terminal {
+  font-size: 0.75rem;
+  line-height: 1.7;
+  min-height: 70vh;
+  padding: 16px;
+}
+.terminal i {
+  animation: blink 1s step-end infinite;
+  background: #00ff41;
+  display: inline-block;
+  height: 12px;
+  width: 8px;
+}
+.hacker-page aside {
+  background: rgba(0, 255, 65, 0.04);
+  border: 1px solid rgba(0, 255, 65, 0.25);
+  font-size: 0.75rem;
+  padding: 12px;
+  position: fixed;
+  right: 16px;
+  top: 60px;
+  width: 220px;
+}
+.hacker-page aside div {
+  background: #003d0d;
+  height: 8px;
+}
+.hacker-page aside div span {
+  background: #00ff41;
+  display: block;
+  height: 100%;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (max-width: 699px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+  .game-sidebar {
+    width: 100%;
+  }
+  .hacker-page aside {
+    position: static;
+    width: auto;
+  }
+  .hacker-page header span {
+    display: none;
+  }
+}
