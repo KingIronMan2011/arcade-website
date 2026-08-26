@@ -1,44 +1,37 @@
 # Arcade
 
-Small browser games with an unapologetically neon look. The arcade shell is built with Next.js, React, Tailwind CSS v4, and TypeScript 6.
+Browser games with a neon arcade look, built with Next.js, React, Tailwind CSS v4, TypeScript 6, and pnpm.
 
-[Play it here](https://arcade.kingironman.dev)
+[Play the arcade](https://arcade.kingironman.dev)
 
-## Included games
+## Games
 
-- **Neon Snake** — a 20×20 grid, wall wrap, rising speed, upgrades, perks, and touch controls.
-- **Neon Tetris** — hold, next queue, scoring, upgrades, perks, and keyboard or touch controls.
-- **Hacker Typer** — type anything and watch a very convincing terminal do its thing.
+- **Neon Snake** — a 20×20 wraparound grid with keyboard controls and scoring.
+- **Neon Tetris** — a neon board with score tracking and keyboard controls.
+- **Hacker Typer** — type to fill a fake terminal and intrusion meter.
 
-Snake and Tetris save high scores, coins, and shop purchases in your browser. Clearing site data clears those saves too.
-
-## Run it locally
-
-Install dependencies and start the development server:
+## Run locally
 
 ```sh
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Build the production app with `npm run build`. Run `npm run typecheck` to check the TypeScript app.
+```sh
+pnpm types
+pnpm build
+```
+
+Use `pnpm lint` to run ESLint and `pnpm format` to format the project.
 
 ## Project layout
 
 ```text
-src/app/      Next.js routes and Tailwind styles
-src/components/ Shared React components
-src/games/    React game implementations
-public/       Shared favicon and web-app icons
+src/app/    Next.js routes and global styles
+public/     Shared favicon and web-app icons
 ```
-
-## Controls
-
-- **Snake:** arrow keys or WASD; use the on-screen D-pad or swipe on mobile.
-- **Tetris:** arrow keys to move, Up to rotate, Down to soft drop, and Space to hard drop.
-- **Hacker Typer:** start typing.
 
 ## License
 

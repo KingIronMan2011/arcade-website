@@ -1,0 +1,17 @@
+# Arcade
+
+> A small browser arcade with Neon Snake, Neon Tetris, and Hacker Typer.
+
+The site is a Next.js application. Each game is available without an account or installation.
+
+## Pages
+
+- [Arcade home](https://arcade.kingironman.dev/): Game selection.
+- [Neon Snake](https://arcade.kingironman.dev/snake): A 20×20 wraparound snake game with keyboard controls.
+- [Neon Tetris](https://arcade.kingironman.dev/tetris): A neon-styled browser Tetris board.
+- [Hacker Typer](https://arcade.kingironman.dev/hacker): A fake terminal that reacts to typing.
+
+## Project
+
+- Source repository: https://github.com/KingIronMan2011/arcade-website
+- License: MIT

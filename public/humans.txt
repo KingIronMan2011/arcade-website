@@ -1,0 +1,18 @@
+/* TEAM */
+Creator: KingIronMan2011
+Repository: https://github.com/KingIronMan2011/arcade-website
+
+/* SITE */
+Site: Arcade
+URL: https://arcade.kingironman.dev
+Language: English
+
+/* TECHNOLOGY */
+Next.js
+React
+TypeScript 6
+Tailwind CSS v4
+pnpm
+
+/* LICENSE */
+MIT

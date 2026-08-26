@@ -14,8 +14,32 @@ const shareTechMono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://arcade.kingironman.dev"),
   title: { default: "Arcade", template: "%s | Arcade" },
   description: "Small browser games with an unapologetically neon look.",
+  alternates: { canonical: "/" },
+  keywords: [
+    "browser games",
+    "arcade games",
+    "snake",
+    "tetris",
+    "hacker typer",
+  ],
+  authors: [{ name: "KingIronMan2011" }],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Arcade",
+    title: "Arcade",
+    description: "Small browser games with an unapologetically neon look.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary",
+    title: "Arcade",
+    description: "Small browser games with an unapologetically neon look.",
+  },
+  robots: { index: true, follow: true },
   manifest: "/site.webmanifest",
   icons: {
     icon: [
