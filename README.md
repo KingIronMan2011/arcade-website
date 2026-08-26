@@ -1,41 +1,45 @@
-# 🕹️ Arcade Website
+# Arcade
 
-> **Note:** This project is an experiment to see what Claude (Anthropic's AI) can build with zero manual code changes from the developer, there are only some exceptions. Every line of code, design decision, bug fix, and deployment was done entirely by Claude through conversation.
+Small browser games with an unapologetically neon look. No build step, no framework, no account required.
 
-## Live Site
-👉 **[arcade.king-mc.de](https://arcade.kingironman.dev)**
+[Play it here](https://arcade.kingironman.dev)
 
-## Games
+## Included games
 
-| Game | Status |
-|------|--------|
-| 🐍 Neon Snake | ✅ Playable |
-| 👾 ??? | 🔜 Coming Soon |
-| 🎮 ??? | 🔜 Coming Soon |
+- **Neon Snake** — a 20×20 grid, wall wrap, rising speed, upgrades, perks, and touch controls.
+- **Neon Tetris** — hold, next queue, scoring, upgrades, perks, and keyboard or touch controls.
+- **Hacker Typer** — type anything and watch a very convincing terminal do its thing.
 
-## Neon Snake Features
-- Classic snake gameplay on a 20×20 neon grid
-- Wall wrap-around (no death on wall hit)
-- Levels & speed scaling every 100 points
-- **Shop system** with persistent coin currency
-  - Upgrades: Speed Limit, Score Boost (3 levels each)
-  - Perks: Shield, Bonus Food, Ghost, Magnet, Coin Boost, Extra Life
-- Tutorial for new players
-- Fully responsive — sidebar layout on desktop, stacked D-pad layout on mobile
-- Swipe support on touchscreens
+Snake and Tetris save high scores, coins, and shop purchases in your browser. Clearing site data clears those saves too.
 
-## Tech Stack
-- Plain HTML, CSS, JavaScript — no frameworks
-- GitHub Pages for hosting
-- GitHub Actions for automated deployment
-- Fonts: [Orbitron](https://fonts.google.com/specimen/Orbitron) + [Share Tech Mono](https://fonts.google.com/specimen/Share+Tech+Mono)
+## Run it locally
 
-## Roadmap
-- [x] Tetris
-- [ ] Breakout
-- [ ] Minesweeper
-- [ ] Migrate to Next.js
+Clone the repo and open `index.html` in a browser. The games are plain HTML, CSS, and JavaScript, so there is nothing to install.
 
----
+For a local server:
 
-*Built entirely with [Claude](https://claude.ai) by Anthropic.*
+```sh
+npx serve .
+```
+
+Then open the address printed in the terminal.
+
+## Project layout
+
+```text
+index.html    Arcade home screen
+snake.html    Neon Snake
+tetris.html   Neon Tetris
+hacker.html   Hacker Typer
+public/       Shared favicon and web-app icons
+```
+
+## Controls
+
+- **Snake:** arrow keys or WASD; use the on-screen D-pad or swipe on mobile.
+- **Tetris:** arrow keys to move, Up to rotate, Down to soft drop, and Space to hard drop.
+- **Hacker Typer:** start typing.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
