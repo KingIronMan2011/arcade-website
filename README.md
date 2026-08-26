@@ -30,7 +30,7 @@ Build the production app with `npm run build`. Run `npm run typecheck` to check 
 ```text
 src/app/      Next.js routes and Tailwind styles
 src/components/ Shared React components
-public/games/ Original game pages, loaded by the React routes
+src/games/    React game implementations
 public/       Shared favicon and web-app icons
 ```
 

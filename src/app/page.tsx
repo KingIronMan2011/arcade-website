@@ -3,68 +3,77 @@ import Link from "next/link";
 const games = [
   {
     href: "/snake",
-    title: "Neon Snake",
-    detail: "Wrap the walls. Chase the score.",
-    mark: "S",
+    icon: "🐍",
+    name: "NEON SNAKE",
+    description:
+      "Classic snake with a neon twist. Shop upgrades, perks, and endless fun.",
   },
   {
     href: "/tetris",
-    title: "Neon Tetris",
-    detail: "Stack clean. Clear lines.",
-    mark: "T",
+    icon: "🧱",
+    name: "NEON TETRIS",
+    description:
+      "Classic falling blocks, neon style. Hold, ghost piece, 7-bag randomizer.",
   },
   {
     href: "/hacker",
-    title: "Hacker Typer",
-    detail: "Type anything. Look dangerous.",
-    mark: ">_",
+    icon: "👾",
+    name: "HACKER TYPER",
+    description:
+      "Troll your friends with a fake hacker typer that simulates real hacking.",
   },
 ];
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-5xl flex-col px-6 py-12 sm:px-10">
-      <header className="mb-14 flex items-center justify-between border-b border-cyan-400/20 pb-6">
-        <Link
-          href="/"
-          className="font-mono text-xl font-black tracking-[0.32em] text-cyan-300"
-        >
-          ARCADE
-        </Link>
-        <span className="font-mono text-xs tracking-[0.2em] text-cyan-100/50">
-          SELECT GAME
-        </span>
-      </header>
-
-      <section className="mb-10 max-w-2xl">
-        <p className="mb-3 font-mono text-sm tracking-[0.18em] text-emerald-300">
-          // NO INSTALL. NO LOGIN.
-        </p>
-        <h1 className="text-4xl font-black tracking-tight text-white sm:text-6xl">
-          Pick a game and start playing.
-        </h1>
-      </section>
-
-      <section className="grid gap-4 md:grid-cols-3">
-        {games.map((game) => (
-          <Link
-            key={game.href}
-            href={game.href}
-            className="group rounded-lg border border-cyan-400/25 bg-slate-950/60 p-6 transition hover:-translate-y-1 hover:border-cyan-300 hover:bg-cyan-950/30"
-          >
-            <span className="mb-12 block font-mono text-3xl font-bold text-emerald-300">
-              {game.mark}
-            </span>
-            <h2 className="font-mono text-xl font-bold uppercase tracking-wide text-white">
-              {game.title}
-            </h2>
-            <p className="mt-2 text-sm text-slate-300">{game.detail}</p>
-            <span className="mt-6 block font-mono text-xs tracking-[0.2em] text-cyan-300">
-              PLAY →
-            </span>
-          </Link>
-        ))}
-      </section>
+    <main className="arcade-launcher">
+      <div className="arcade-container">
+        <header className="arcade-header">
+          <div className="arcade-tag">SELECT YOUR GAME</div>
+          <h1>ARCADE</h1>
+          <div className="arcade-sub">More games coming soon</div>
+        </header>
+        <section className="arcade-game-grid">
+          {games.map((game) => (
+            <Link key={game.href} className="arcade-game-card" href={game.href}>
+              <div className="arcade-card-icon">{game.icon}</div>
+              <div className="arcade-card-name">{game.name}</div>
+              <div className="arcade-card-desc">{game.description}</div>
+              <div className="arcade-card-footer">
+                <span className="arcade-card-badge arcade-badge-playable">
+                  PLAYABLE
+                </span>
+                <span className="arcade-card-arrow">▶</span>
+              </div>
+            </Link>
+          ))}
+          <div className="arcade-game-card arcade-coming-soon">
+            <div className="arcade-card-icon">🎮</div>
+            <div className="arcade-card-name">???</div>
+            <div className="arcade-card-desc">
+              Another game in the works. Stay tuned.
+            </div>
+            <div className="arcade-card-footer">
+              <span className="arcade-card-badge arcade-badge-soon">
+                COMING SOON
+              </span>
+              <span className="arcade-card-arrow">▶</span>
+            </div>
+          </div>
+        </section>
+        <footer className="arcade-footer">
+          <span className="arcade-footer-text">
+            ARCADE · Built with Claude ·{" "}
+            <a
+              href="https://github.com/KingIronMan2011/arcade-website"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub ↗
+            </a>
+          </span>
+        </footer>
+      </div>
     </main>
   );
 }

@@ -1,5 +1,17 @@
 import type { Metadata } from "next";
+import { Orbitron, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
+
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
+  subsets: ["latin"],
+});
+
+const shareTechMono = Share_Tech_Mono({
+  variable: "--font-share-tech-mono",
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: { default: "Arcade", template: "%s | Arcade" },
@@ -20,7 +32,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${orbitron.variable} ${shareTechMono.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
